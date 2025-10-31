@@ -270,7 +270,7 @@ export default function Index() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">г. Москва, ул. Производственная, д. 15</p>
+                  <p className="text-muted-foreground">Нижегородская область, Городецкий муниципальный округ, село Смольки, улица Новая, строение 13</p>
                 </CardContent>
               </Card>
 
