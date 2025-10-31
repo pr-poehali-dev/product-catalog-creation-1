@@ -15,6 +15,7 @@ interface Product {
 
 const categories = [
   { id: 'meat', name: 'Мясо', icon: 'Beef' },
+  { id: 'sausages', name: 'Колбасы', icon: 'Ham' },
   { id: 'semifinished', name: 'Полуфабрикаты', icon: 'Package' },
   { id: 'smoked', name: 'Копчености', icon: 'Flame' },
   { id: 'cakes', name: 'Торты', icon: 'Cake' },
@@ -28,7 +29,10 @@ const products: Product[] = [
   { id: 3, name: 'Пельмени домашние', category: 'semifinished', price: 320, composition: 'Говядина, свинина, тесто, специи', image: '/placeholder.svg' },
   { id: 4, name: 'Котлеты куриные', category: 'semifinished', price: 280, composition: 'Филе курицы, лук, специи', image: '/placeholder.svg' },
   { id: 5, name: 'Грудинка копченая', category: 'smoked', price: 720, composition: 'Свиная грудинка, соль, дым ольховый', image: '/placeholder.svg' },
-  { id: 6, name: 'Колбаса сырокопченая', category: 'smoked', price: 850, composition: 'Говядина, свинина, специи', image: '/placeholder.svg' },
+  { id: 6, name: 'Колбаса сырокопченая', category: 'sausages', price: 850, composition: 'Говядина, свинина, специи', image: '/placeholder.svg' },
+  { id: 13, name: 'Колбаса вареная', category: 'sausages', price: 420, composition: 'Свинина, говядина, молоко, специи', image: '/placeholder.svg' },
+  { id: 14, name: 'Сосиски молочные', category: 'sausages', price: 380, composition: 'Свинина, говядина, молоко', image: '/placeholder.svg' },
+  { id: 15, name: 'Салями итальянская', category: 'sausages', price: 920, composition: 'Свинина, специи, вино', image: '/placeholder.svg' },
   { id: 7, name: 'Торт "Наполеон"', category: 'cakes', price: 1200, composition: 'Слоеное тесто, заварной крем, сливочное масло', image: '/placeholder.svg' },
   { id: 8, name: 'Торт "Прага"', category: 'cakes', price: 1350, composition: 'Шоколадные коржи, сливки, какао', image: '/placeholder.svg' },
   { id: 9, name: 'Бородинский хлеб', category: 'bread', price: 85, composition: 'Ржаная мука, солод, кориандр', image: '/placeholder.svg' },
@@ -107,7 +111,7 @@ export default function Index() {
           <section className="py-20 bg-background">
             <div className="container mx-auto px-4">
               <h2 className="text-4xl font-bold text-center mb-16 text-foreground">Категории продуктов</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6">
                 {categories.map((cat, idx) => (
                   <Card 
                     key={cat.id}
