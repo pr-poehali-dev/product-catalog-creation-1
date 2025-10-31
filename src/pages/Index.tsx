@@ -59,9 +59,8 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b">
         <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Icon name="ShoppingBag" size={28} className="text-primary" />
-            <span className="text-2xl font-bold text-foreground">Наш Продукт</span>
+          <div className="flex items-center gap-3">
+            <img src="https://cdn.poehali.dev/files/bc00e618-2da4-4ea8-bf3e-5ac10f1d3b12.jpg" alt="Наш Продукт" className="h-12" />
           </div>
           <div className="hidden md:flex gap-8">
             {['home', 'catalog', 'about', 'reviews', 'contacts'].map(section => (
@@ -314,8 +313,7 @@ export default function Index() {
       <footer className="bg-gray-900 text-white py-12 mt-20">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Icon name="ShoppingBag" size={24} className="text-primary" />
-            <span className="text-xl font-bold">Наш Продукт</span>
+            <img src="https://cdn.poehali.dev/files/bc00e618-2da4-4ea8-bf3e-5ac10f1d3b12.jpg" alt="Наш Продукт" className="h-16 brightness-0 invert" />
           </div>
           <p className="text-gray-400">© 2024 Наш Продукт. Все права защищены.</p>
         </div>
