@@ -312,7 +312,7 @@ export default function Index() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">Пн-Пт: 8:00 - 20:00<br />Сб-Вс: 9:00 - 18:00</p>
+                  <p className="text-muted-foreground">Пн-Вс: 8:00 - 17:00</p>
                 </CardContent>
               </Card>
             </div>
