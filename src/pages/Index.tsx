@@ -31,7 +31,7 @@ const products: Product[] = [
   { id: 3, name: 'Пельмени домашние', category: 'semifinished', price: 320, composition: 'Говядина, свинина, тесто, специи', image: '/placeholder.svg' },
   { id: 4, name: 'Котлеты куриные', category: 'semifinished', price: 280, composition: 'Филе курицы, лук, специи', image: '/placeholder.svg' },
   { id: 5, name: 'Грудинка копченая', category: 'smoked', price: 720, composition: 'Свиная грудинка, соль, дым ольховый', image: '/placeholder.svg' },
-  { id: 6, name: 'Колбаса сырокопченая', category: 'sausages', price: 850, composition: 'Говядина, свинина, специи', image: '/placeholder.svg' },
+  { id: 6, name: 'Колбаса домашняя', category: 'sausages', price: 850, composition: 'Говядина, свинина, специи', image: 'https://cdn.poehali.dev/files/ba59d1c1-c2f5-40c5-95e1-4676b4840336.jpg' },
   { id: 13, name: 'Колбаса вареная', category: 'sausages', price: 420, composition: 'Свинина, говядина, молоко, специи', image: '/placeholder.svg' },
   { id: 14, name: 'Сосиски молочные', category: 'sausages', price: 380, composition: 'Свинина, говядина, молоко', image: '/placeholder.svg' },
   { id: 15, name: 'Салями итальянская', category: 'sausages', price: 920, composition: 'Свинина, специи, вино', image: '/placeholder.svg' },
