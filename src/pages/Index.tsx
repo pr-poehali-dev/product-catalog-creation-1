@@ -88,7 +88,7 @@ export default function Index() {
 
       {activeSection === 'home' && (
         <main>
-          <section className="relative h-[600px] flex items-center justify-center bg-gradient-to-br from-orange-50 to-white overflow-hidden">
+          <section className="relative h-[600px] flex items-center justify-center bg-gradient-to-br from-green-50 to-white overflow-hidden">
             <div className="absolute inset-0 bg-[url('/placeholder.svg')] bg-cover bg-center opacity-5" />
             <div className="container mx-auto px-4 text-center relative z-10 animate-fade-in">
               <h1 className="text-6xl md:text-7xl font-bold text-foreground mb-6">
