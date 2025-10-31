@@ -230,7 +230,7 @@ export default function Index() {
                 <Card className="text-center">
                   <CardContent className="pt-6">
                     <Icon name="Package" size={48} className="mx-auto mb-4 text-primary" />
-                    <h3 className="font-bold text-xl mb-2">1000+</h3>
+                    <h3 className="font-bold text-xl mb-2">1000</h3>
                     <p className="text-muted-foreground">наименований продукции</p>
                   </CardContent>
                 </Card>
