@@ -288,7 +288,7 @@ export default function Index() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">+7 (495) 123-45-67</p>
+                  <p className="text-muted-foreground">+7 (987) 741-87-99</p>
                 </CardContent>
               </Card>
 
