@@ -179,12 +179,7 @@ export default function Index() {
                     <CardDescription className="text-sm">{product.composition}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-primary">{product.price} ₽</span>
-                      <Button size="sm">
-                        Купить
-                      </Button>
-                    </div>
+                    <span className="text-2xl font-bold text-primary">{product.price} ₽</span>
                   </CardContent>
                 </Card>
               ))}
