@@ -173,9 +173,6 @@ export default function Index() {
                   <CardContent>
                     <div className="flex items-center justify-between">
                       <span className="text-2xl font-bold text-primary">{product.price} ₽</span>
-                      <Button size="sm">
-                        <Icon name="Plus" size={16} />
-                      </Button>
                     </div>
                   </CardContent>
                 </Card>
