@@ -18,6 +18,7 @@ const categories = [
   { id: 'sausages', name: 'Колбасы', icon: 'Ham' },
   { id: 'semifinished', name: 'Полуфабрикаты', icon: 'Package' },
   { id: 'smoked', name: 'Копчености', icon: 'Flame' },
+  { id: 'dairy', name: 'Молочная продукция', icon: 'Milk' },
   { id: 'cakes', name: 'Торты', icon: 'Cake' },
   { id: 'bread', name: 'Хлеб', icon: 'Wheat' },
   { id: 'pies', name: 'Пироги', icon: 'Cookie' }
@@ -39,7 +40,11 @@ const products: Product[] = [
   { id: 9, name: 'Бородинский хлеб', category: 'bread', price: 85, composition: 'Ржаная мука, солод, кориандр', image: '/placeholder.svg' },
   { id: 10, name: 'Багет французский', category: 'bread', price: 95, composition: 'Пшеничная мука, вода, соль, дрожжи', image: '/placeholder.svg' },
   { id: 11, name: 'Пирог с капустой', category: 'pies', price: 180, composition: 'Дрожжевое тесто, капуста, яйца', image: '/placeholder.svg' },
-  { id: 12, name: 'Пирог с яблоками', category: 'pies', price: 220, composition: 'Песочное тесто, яблоки, корица, сахар', image: '/placeholder.svg' }
+  { id: 12, name: 'Пирог с яблоками', category: 'pies', price: 220, composition: 'Песочное тесто, яблоки, корица, сахар', image: '/placeholder.svg' },
+  { id: 17, name: 'Молоко домашнее', category: 'dairy', price: 120, composition: 'Натуральное коровье молоко, 3.2% жирности', image: '/placeholder.svg' },
+  { id: 18, name: 'Творог фермерский', category: 'dairy', price: 280, composition: 'Творог из цельного молока, 9% жирности', image: '/placeholder.svg' },
+  { id: 19, name: 'Сметана домашняя', category: 'dairy', price: 150, composition: 'Натуральная сметана, 20% жирности', image: '/placeholder.svg' },
+  { id: 20, name: 'Масло сливочное', category: 'dairy', price: 380, composition: 'Сливочное масло, 82.5% жирности', image: '/placeholder.svg' }
 ];
 
 const reviews = [
@@ -115,7 +120,7 @@ export default function Index() {
           <section className="py-20 bg-background">
             <div className="container mx-auto px-4">
               <h2 className="text-4xl font-bold text-center mb-16 text-foreground">Категории продуктов</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {categories.map((cat, idx) => (
                   <Card 
                     key={cat.id}
