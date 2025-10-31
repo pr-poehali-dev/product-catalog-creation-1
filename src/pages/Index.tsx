@@ -92,13 +92,14 @@ export default function Index() {
 
       {activeSection === 'home' && (
         <main>
-          <section className="relative h-[600px] flex items-center justify-center bg-gradient-to-br from-green-50 to-white overflow-hidden">
-            <div className="absolute inset-0 bg-[url('/placeholder.svg')] bg-cover bg-center opacity-5" />
+          <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://cdn.poehali.dev/files/b4f22765-d9a1-404a-918b-fef39e295eb8.jpg')] bg-cover bg-center" />
+            <div className="absolute inset-0 bg-black/40" />
             <div className="container mx-auto px-4 text-center relative z-10 animate-fade-in">
-              <h1 className="text-6xl md:text-7xl font-bold text-foreground mb-6">
+              <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
                 Качество на вашем столе
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
                 Свежие продукты от производителя: мясо, выпечка, деликатесы
               </p>
               <Button 
