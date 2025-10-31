@@ -197,28 +197,41 @@ export default function Index() {
         <section className="py-16">
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-4xl font-bold mb-8 text-foreground">О нас</h2>
-            <div className="prose prose-lg">
+            <div className="prose prose-lg max-w-none">
               <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                Мы — семейное производство с 15-летним опытом создания качественных продуктов питания. 
-                Наша миссия — приносить на ваш стол свежие, натуральные и вкусные продукты.
+                🥩 Компания «Наш продукт» — ваш надёжный поставщик натуральных продуктов!
               </p>
               <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                Мы работаем только с проверенными поставщиками сырья, контролируем каждый этап производства 
-                и гарантируем свежесть наших товаров.
+                <strong>Направления бизнеса:</strong> мясопереработка, производство полуфабрикатов, колбасных и копченых изделий, выпечка и кондитерские изделия, розничная торговля.
+              </p>
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                <strong>Наша гордость:</strong> собственное производство, более 1000 наименований продукции, 20 лет на рынке, современное европейское оборудование, строжайший контроль качества.
+              </p>
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                <strong>Принципы работы:</strong> натуральные ингредиенты, традиционные русские рецепты, открытость производства.
+              </p>
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                Качество — наш приоритет! На предприятии работают ветеринары, которые следят за здоровьем животных и свежестью продукции.
+              </p>
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                👨‍💼 Команда профессионалов создаёт вкусную и качественную еду для вас. Мы ценим доверие покупателей и постоянно совершенствуемся!
+              </p>
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed font-semibold">
+                Добро пожаловать в магазины «Наш продукт»! ❤
               </p>
               <div className="grid md:grid-cols-3 gap-6 mt-12">
                 <Card className="text-center">
                   <CardContent className="pt-6">
                     <Icon name="Award" size={48} className="mx-auto mb-4 text-primary" />
-                    <h3 className="font-bold text-xl mb-2">15 лет</h3>
+                    <h3 className="font-bold text-xl mb-2">20 лет</h3>
                     <p className="text-muted-foreground">на рынке</p>
                   </CardContent>
                 </Card>
                 <Card className="text-center">
                   <CardContent className="pt-6">
-                    <Icon name="Users" size={48} className="mx-auto mb-4 text-primary" />
-                    <h3 className="font-bold text-xl mb-2">5000+</h3>
-                    <p className="text-muted-foreground">довольных клиентов</p>
+                    <Icon name="Package" size={48} className="mx-auto mb-4 text-primary" />
+                    <h3 className="font-bold text-xl mb-2">1000+</h3>
+                    <p className="text-muted-foreground">наименований продукции</p>
                   </CardContent>
                 </Card>
                 <Card className="text-center">
