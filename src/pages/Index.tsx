@@ -300,7 +300,7 @@ export default function Index() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">info@nashproduct.ru</p>
+                  <p className="text-muted-foreground">dmitrykozyrev2000@yandex.ru</p>
                 </CardContent>
               </Card>
 
