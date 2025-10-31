@@ -80,9 +80,11 @@ export default function Index() {
               </button>
             ))}
           </div>
-          <Button>
-            <Icon name="ShoppingCart" size={18} className="mr-2" />
-            Корзина
+          <Button asChild className="bg-[#25D366] hover:bg-[#22c55e]">
+            <a href="https://wa.me/79877418799" target="_blank" rel="noopener noreferrer" className="flex items-center">
+              <Icon name="MessageCircle" size={18} className="mr-2" />
+              WhatsApp
+            </a>
           </Button>
         </nav>
       </header>
