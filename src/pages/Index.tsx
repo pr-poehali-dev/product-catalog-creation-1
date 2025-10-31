@@ -26,7 +26,7 @@ const categories = [
 const products: Product[] = [
   { id: 1, name: 'Говядина премиум', category: 'meat', price: 890, composition: 'Мраморная говядина, 100% натуральное мясо', image: '/placeholder.svg' },
   { id: 2, name: 'Свинина отборная', category: 'meat', price: 650, composition: 'Свежая свинина, без добавок', image: '/placeholder.svg' },
-  { id: 16, name: 'Шея свиная без кости', category: 'meat', price: 550, composition: 'Свежая свиная шея, без костей', image: 'https://cdn.poehali.dev/files/20ec70ce-6b98-4d0d-b3a1-5ab7e25d4efa.jpg' },
+  { id: 16, name: 'Шея свиная с костью', category: 'meat', price: 550, composition: 'Свежая свиная шея, с костью', image: 'https://cdn.poehali.dev/files/20ec70ce-6b98-4d0d-b3a1-5ab7e25d4efa.jpg' },
   { id: 3, name: 'Пельмени домашние', category: 'semifinished', price: 320, composition: 'Говядина, свинина, тесто, специи', image: '/placeholder.svg' },
   { id: 4, name: 'Котлеты куриные', category: 'semifinished', price: 280, composition: 'Филе курицы, лук, специи', image: '/placeholder.svg' },
   { id: 5, name: 'Грудинка копченая', category: 'smoked', price: 720, composition: 'Свиная грудинка, соль, дым ольховый', image: '/placeholder.svg' },
