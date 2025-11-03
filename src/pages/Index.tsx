@@ -35,6 +35,7 @@ const products: Product[] = [
   { id: 13, name: 'Колбаса вареная', category: 'sausages', price: 420, composition: 'Свинина, говядина, молоко, специи', image: '/placeholder.svg' },
   { id: 14, name: 'Сосиски молочные', category: 'sausages', price: 380, composition: 'Свинина, говядина, молоко', image: '/placeholder.svg' },
   { id: 15, name: 'Салями итальянская', category: 'sausages', price: 920, composition: 'Свинина, специи, вино', image: '/placeholder.svg' },
+  { id: 21, name: 'Ветчина куриная', category: 'sausages', price: 480, composition: 'Мясо кур, вода, крахмал, специи. Пищевая ценность (100г): белки 14,5г, жиры 20,2г, углеводы 0,9г. Калорийность 263 ккал. Срок годности при +2-6°C не более 30 суток', image: 'https://cdn.poehali.dev/files/2795d88f-4436-43b0-bc8b-1fde32973422.JPG' },
   { id: 7, name: 'Торт "Наполеон"', category: 'cakes', price: 1200, composition: 'Слоеное тесто, заварной крем, сливочное масло', image: '/placeholder.svg' },
   { id: 8, name: 'Торт "Прага"', category: 'cakes', price: 1350, composition: 'Шоколадные коржи, сливки, какао', image: '/placeholder.svg' },
   { id: 9, name: 'Бородинский хлеб', category: 'bread', price: 85, composition: 'Ржаная мука, солод, кориандр', image: '/placeholder.svg' },
