@@ -16,6 +16,7 @@ interface Product {
 const categories = [
   { id: 'meat', name: 'Мясо', icon: 'Beef' },
   { id: 'sausages', name: 'Колбасы', icon: 'Ham' },
+  { id: 'wieners', name: 'Сардельки, сосиски', icon: 'Sandwich' },
   { id: 'semifinished', name: 'Полуфабрикаты', icon: 'Package' },
   { id: 'smoked', name: 'Копчености', icon: 'Flame' },
   { id: 'dairy', name: 'Молочная продукция', icon: 'Milk' },
