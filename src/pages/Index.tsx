@@ -70,6 +70,7 @@ export default function Index() {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
@@ -211,7 +212,7 @@ export default function Index() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredProducts.map((product, idx) => (
                 <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-all animate-fade-in hover-scale" style={{ animationDelay: `${idx * 0.05}s` }}>
-                  <div className="aspect-square bg-muted overflow-hidden">
+                  <div className="aspect-square bg-muted overflow-hidden cursor-pointer" onClick={() => setLightboxImage(product.image)}>
                     <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
                   </div>
                   <CardHeader>
@@ -377,6 +378,26 @@ export default function Index() {
           <p className="text-muted-foreground">© 2024 Наш Продукт. Все права защищены.</p>
         </div>
       </footer>
+
+      {lightboxImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 cursor-pointer"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button 
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+            onClick={() => setLightboxImage(null)}
+          >
+            <Icon name="X" size={32} />
+          </button>
+          <img 
+            src={lightboxImage} 
+            alt="Увеличенное фото" 
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 }
