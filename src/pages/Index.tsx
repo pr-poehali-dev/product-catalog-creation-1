@@ -112,10 +112,10 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b">
         <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <button onClick={() => setActiveSection('home')} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <img src="https://cdn.poehali.dev/files/bc00e618-2da4-4ea8-bf3e-5ac10f1d3b12.jpg" alt="Наш Продукт" className="h-12" />
             <span className="text-xl font-bold text-foreground">Наш продукт</span>
-          </div>
+          </button>
           <div className="hidden md:flex gap-8">
             {['home', 'catalog', 'about', 'reviews', 'contacts'].map(section => (
               <button
