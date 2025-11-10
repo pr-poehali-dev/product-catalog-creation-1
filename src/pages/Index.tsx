@@ -263,7 +263,7 @@ export default function Index() {
               {filteredProducts.map((product, idx) => (
                 <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-all animate-fade-in hover-scale" style={{ animationDelay: `${idx * 0.05}s` }}>
                   <div className="aspect-square bg-muted overflow-hidden cursor-pointer" onClick={() => setLightboxImage(product.image)}>
-                    <img src={product.image} alt={product.name} className={`w-full h-full ${product.id === 70 ? 'object-contain' : 'object-cover'}`} />
+                    <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
                   </div>
                   <CardHeader>
                     <CardTitle className="text-lg">{product.name}</CardTitle>
