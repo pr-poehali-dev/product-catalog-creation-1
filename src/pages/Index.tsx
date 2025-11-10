@@ -32,6 +32,7 @@ const products: Product[] = [
   { id: 3, name: 'Пельмени домашние', category: 'semifinished', price: 320, composition: 'Говядина, свинина, тесто, специи', image: '/placeholder.svg' },
   { id: 4, name: 'Котлеты куриные', category: 'semifinished', price: 280, composition: 'Филе курицы, лук, специи', image: '/placeholder.svg' },
   { id: 5, name: 'Грудинка восточная в/к в обсыпке', category: 'smoked', price: 745, composition: 'Свиная грудинка в восточной обсыпке, варено-копченая', image: 'https://cdn.poehali.dev/files/6ab8730a-9938-437a-b32f-052ed63ef43f.JPG' },
+  { id: 68, name: 'Грудинка купеческая в/к', category: 'smoked', price: 770, composition: 'Свиная грудинка купеческая, варено-копченая', image: 'https://cdn.poehali.dev/files/bc5182bb-8563-4ac8-b151-314af4cef298.JPG' },
   { id: 6, name: 'Грудинка любительская в/к', category: 'smoked', price: 755, composition: 'Свиная грудинка любительская, варено-копченая', image: 'https://cdn.poehali.dev/files/87d0fda3-8869-4d27-b600-4c1c0d34be34.JPG' },
   { id: 7, name: 'Грудинка по-домашнему в/к', category: 'smoked', price: 985, composition: 'Свиная грудинка по-домашнему, варено-копченая', image: 'https://cdn.poehali.dev/files/94026618-54aa-4339-965b-3c6d19acfa12.JPG' },
   { id: 8, name: 'Индейка грудка в/к', category: 'smoked', price: 910, composition: 'Грудка индейки, варено-копченая', image: 'https://cdn.poehali.dev/files/65746c5c-40a3-490c-8d0b-131e933c8fbf.jpg' },
