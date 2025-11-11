@@ -137,10 +137,12 @@ export default function Index() {
     }
     
     if (searchQuery.trim()) {
-      filtered = filtered.filter(p => 
-        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.composition.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      const normalizedQuery = searchQuery.toLowerCase().replace(/[\\\/]/g, '');
+      filtered = filtered.filter(p => {
+        const normalizedName = p.name.toLowerCase().replace(/[\\\/]/g, '');
+        const normalizedComposition = p.composition.toLowerCase().replace(/[\\\/]/g, '');
+        return normalizedName.includes(normalizedQuery) || normalizedComposition.includes(normalizedQuery);
+      });
     }
     
     return filtered;
