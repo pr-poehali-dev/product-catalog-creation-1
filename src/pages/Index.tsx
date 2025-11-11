@@ -1,8 +1,9 @@
 import { useState, useMemo } from 'react';
 import Icon from '@/components/ui/icon';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import Header from '@/components/sections/Header';
+import HomeSection from '@/components/sections/HomeSection';
+import CatalogSection from '@/components/sections/CatalogSection';
+import ContentSections from '@/components/sections/ContentSections';
 
 interface Product {
   id: number;
@@ -61,12 +62,12 @@ const products: Product[] = [
   { id: 75, name: 'Свинина тушеная в/с 500 г', category: 'canned', price: 420, composition: 'Состав: свинина, соль, лавровый лист, перец черный. Пищевая ценность (100г): белки 16г, жиры 18г. Калорийность 213 ккал. ГОСТ 32125-2013. Срок годности не более 3 лет при температуре от 0 до +20°C и влажности 75%', image: 'https://cdn.poehali.dev/files/6e44a7db-ee49-40a1-9d5e-3940a79cee2d.png' },
   { id: 76, name: 'Язык свиной в желе 500 г', category: 'canned', price: 650, composition: 'Состав: язык свиной, лавровый лист, перец черный, желатин. Пищевая ценность (100г): белки 13г, жиры 14г. Калорийность 213 ккал. ГОСТ Р 52428. Срок годности не более 3 лет при температуре от 0 до +20°C и влажности 75%', image: 'https://cdn.poehali.dev/files/a3a1c36a-24ad-41a3-97e6-1351ef25aea6.png' },
   { id: 77, name: 'Язык говяжий в желе 500 г', category: 'canned', price: 750, composition: 'Состав: язык говяжий, лавровый лист, перец черный, желатин. Пищевая ценность (100г): белки 13г, жиры 14г. Калорийность 213 ккал. ГОСТ Р 52428. Срок годности не более 3 лет при температуре от 0 до +20°C и влажности 75%', image: 'https://cdn.poehali.dev/files/54e87092-edcf-4f4e-8b17-a95e583badb4.png' },
-  { id: 22, name: 'Варёная к завтраку', category: 'sausages', price: 750, composition: 'Состав: говядина 42%, свинина 29%, мясо куриное 29%, молоко, нитритно-посолочная смесь, яйцо куриное, специи (перец чёрный, мускатный орех). Пищевая ценность (100г): белки не менее 12,5г, жиры не более 22,2г, углеводы не более 0,9г. Калорийность 253 ккал. Срок годности при +2-6°C 30 суток', image: 'https://cdn.poehali.dev/files/7fcc9743-4eec-49fd-8206-b61677248d11.JPG' },
-  { id: 23, name: 'Варёная говяжья', category: 'sausages', price: 1200, composition: 'Состав: говядина, вода, соль, сахар, яйцо куриное, специи. Пищевая ценность (100г): белки 13г, жиры 15г. Калорийность 501 ккал. Срок годности при +2-6°C 30 суток', image: 'https://cdn.poehali.dev/files/72134cd0-b336-4106-b60c-d24d5912b47c.JPG' },
-  { id: 24, name: 'Варёная докторская', category: 'sausages', price: 880, composition: 'Состав: свинина полужирная 73%, говядина 1 сорт 27%, молоко, яйцо куриное, специи. Пищевая ценность (100г): белки 12г, жиры 20г. Калорийность 228 ккал. Срок годности при +2-6°C 30 суток', image: 'https://cdn.poehali.dev/files/5ea88040-313d-4c23-8504-0c4af7dfd672.JPG' },
-  { id: 25, name: 'Варёная окрошечная', category: 'sausages', price: 650, composition: 'Состав: свинина, шпик, яйцо, специи, соль, сахар, чеснок. Пищевая ценность (100г): белки 11,7г, жиры 39г, углеводы 0,2г. Калорийность 299 ккал. Срок годности не более 30 суток при температуре от 0 до +6°C и относительной влажности воздуха 75%', image: 'https://cdn.poehali.dev/files/7dd7c585-1de3-4fff-b90f-6ef07158089a.JPG' },
-  { id: 26, name: 'Варёная ветчинная', category: 'sausages', price: 850, composition: 'Состав: говядина, свинина, вода, яйцо, молоко, крахмал, соль, сахар, мускатный орех. Пищевая ценность (100г): белки 12г, жиры 20г. Калорийность 222 ккал. Срок годности при температуре от 0°C до +6°C и относительной влажности воздуха 75% - 30 суток', image: 'https://cdn.poehali.dev/files/214a69db-b68f-4452-8b2c-1b5fe213428e.JPG' },
-  { id: 27, name: 'Варёная чайная', category: 'sausages', price: 650, composition: 'Состав: говядина, шпик, соль, сахар, перец чёрный, мускатный орех. Пищевая ценность (100г): белки 15г, жиры 42г, углеводы 3,3г. Калорийность 410 ккал. Срок годности при +2-6°C не более 25 суток', image: 'https://cdn.poehali.dev/files/afd7db2d-672b-4c92-9830-60742659479f.JPG' },
+  { id: 22, name: 'Варёная к завтраку', category: 'sausages', price: 750, composition: 'Состав: говядина 42%, свинина 29%, мясо куриное 29%, молоко, яйцо, специи (базилик, чеснок, перец белый, мускатный орех, перец черный). Пищевая ценность (100г): белки 14г, жиры 30г, углеводы 3,5г. Калорийность 340 ккал. Срок годности не более 30 суток при температуре от 0 до +6°C и относительной влажности воздуха 75%', image: 'https://cdn.poehali.dev/files/7f8d5b4d-d87c-4c90-92ff-1d8cead74dc8.jpg' },
+  { id: 23, name: 'Варёная докторская', category: 'sausages', price: 650, composition: 'Состав: свинина 70%, говядина 25%, яйцо 3%, молоко 2%, соль, сахар. ГОСТ Р 52196-2011. Пищевая ценность (100г): белки не менее 13г, жиры не более 22г. Калорийность 250 ккал. Срок годности при температуре от 0 до +6°C не более 30 суток', image: 'https://cdn.poehali.dev/files/8b1d44b4-3c82-488e-bb99-e3afb4b39ff7.JPG' },
+  { id: 24, name: 'Варёная Останкинская', category: 'sausages', price: 650, composition: 'Состав: говядина, свинина, шпик, молоко, соль, сахар, специи (мускатный орех). Пищевая ценность (100г): белки не менее 12,5г, жиры не более 13г. Калорийность 234 ккал. Срок годности при +2-6°C не более 25 суток', image: 'https://cdn.poehali.dev/files/a4c86f8e-a853-4ec5-ba30-4b1e7be64e41.JPG' },
+  { id: 25, name: 'Варёная Ветчинная', category: 'sausages', price: 850, composition: 'Состав: свинина 98%, соль, специи. Пищевая ценность (100г): белки не менее 16г, жиры не более 18г. Калорийность 230 ккал. Срок годности при температуре от 0 до +6°C не более 30 суток', image: 'https://cdn.poehali.dev/files/b8cb5c34-1e15-4e82-b2e0-fde914a2eeef.JPG' },
+  { id: 26, name: 'Варёная вкусная', category: 'sausages', price: 800, composition: 'Состав: говядина, свинина, шпик, соль, сахар, специи. Пищевая ценность (100г): белки 13г, жиры 30г. Калорийность 320 ккал. Срок годности не более 15 суток при температуре от 0 до +6°C и относительной влажности воздуха 75%', image: 'https://cdn.poehali.dev/files/f7cf7e6f-c9cd-4b71-b74d-0c9df9c6db6c.JPG' },
+  { id: 27, name: 'Варёная городская', category: 'sausages', price: 750, composition: 'Состав: говядина 40%, свинина 30%, шпик 25%, специи. Пищевая ценность (100г): белки 13г, жиры не более 28г. Калорийность 300 ккал. Срок годности при +2-6°C 30 суток', image: 'https://cdn.poehali.dev/files/a00cf1d7-6fba-479c-bae7-6d7e49281c05.JPG' },
   { id: 28, name: 'Варёная летняя', category: 'sausages', price: 650, composition: 'Состав: говядина, свинина, шпик, вода, соль, сахар, чеснок. Пищевая ценность (100г): белки 37г, жиры 30г. Калорийность 310 ккал. Срок годности при +2-6°C не более 30 суток', image: 'https://cdn.poehali.dev/files/e8d1fb4c-a656-45f5-9e3b-f27066326cca.JPG' },
   { id: 29, name: 'Варёная любительская', category: 'sausages', price: 800, composition: 'Состав: свинина 75%, шпик 25%, специи (мускатный орех, перец чёрный). Пищевая ценность (100г): белки не менее 12г, жиры не более 28г. Калорийность 300 ккал. Срок годности не более 30 суток при температуре от 0 до +6°C и относительной влажности воздуха 75%', image: 'https://cdn.poehali.dev/files/84989290-eab3-4918-98cd-484a7382da26.JPG' },
   { id: 30, name: 'Варёная русская', category: 'sausages', price: 880, composition: 'Состав: говядина, свинина, шпик, вода, соль, чеснок, перец чёрный, перец белый, мускатный орех. Пищевая ценность (100г): белки 10г, жиры не более 30г. Калорийность 310 ккал. Срок годности при температуре от 0 до +6°C не более 30 суток', image: 'https://cdn.poehali.dev/files/259add01-0a54-4aff-8e76-859d0ac5aa2e.JPG' },
@@ -91,12 +92,12 @@ const products: Product[] = [
   { id: 49, name: 'П/К сервелат польский', category: 'sausages', price: 850, composition: 'Состав: свинина, соль, перец черный. Пищевая ценность (100г): белки 17г, жиры 35г, углеводы 3,3г. Калорийность 360 ккал. Срок годности при +2-6°C не более 25 суток', image: 'https://cdn.poehali.dev/files/4e49339d-d1d2-484d-98c1-8c86ee67b820.jpg' },
   { id: 50, name: 'П/К шварцвальдская', category: 'sausages', price: 1100, composition: 'Состав: свинина, говядина, шпик, соль, специи (перец зеленый). Пищевая ценность (100г): белки 12г, жиры 46г. Калорийность 462 ккал. Срок годности при +2-6°C 15 суток, в вакуумной упаковке 25 суток. Упаковано под вакуумом', image: 'https://cdn.poehali.dev/files/1ad6cf38-8245-4eed-b218-ca5118827ab8.JPG' },
   { id: 51, name: 'П/К охотничьи', category: 'sausages', price: 850, composition: 'Состав: свинина, говядина, соль, специи. Пищевая ценность (100г): белки 14г, жиры 46г, углеводы 2,4г. Калорийность 455 ккал. Срок годности: при -18°C 6 мес., при -12°C 4 мес., при -10°C 3 мес.', image: 'https://cdn.poehali.dev/files/c15182a7-967a-4032-857e-42ce0f8af290.JPG' },
-  { id: 21, name: 'Ветчина куриная', category: 'sausages', price: 850, composition: 'Состав: мясо кур, вода, крахмал, специи. Пищевая ценность (100г): белки 14,5г, жиры 20,2г, углеводы 0,9г. Калорийность 263 ккал. Срок годности при +2-6°C не более 30 суток', image: 'https://cdn.poehali.dev/files/2795d88f-4436-43b0-bc8b-1fde32973422.JPG' },
-  { id: 52, name: 'Ветчина из индейки', category: 'sausages', price: 900, composition: 'Состав: мясо индейки 99%, крахмал 1%, соль, специи. Пищевая ценность (100г): белки 10г, жиры 13,4г, углеводы 15г. Калорийность 260 ккал. Срок годности при +2-6°C не более 5 суток, в вакуумной упаковке не более 15 суток', image: 'https://cdn.poehali.dev/files/f57f6ce9-d84c-42c4-9eed-b3c53d576a58.JPG' },
-  { id: 53, name: 'Ветчина имперская', category: 'sausages', price: 1100, composition: 'Состав: свинина, соль, крахмал, сахар, специи. Пищевая ценность (100г): белки 12г, жиры 28г, углеводы 3,5г. Калорийность 314 ккал. Срок годности при +2-6°C не более 5 суток, в вакуумной упаковке не более 15 суток', image: 'https://cdn.poehali.dev/files/ac965f81-1ec3-4880-9c28-14ca46371e08.JPG' },
-  { id: 54, name: 'Сардельки говяжьи', category: 'wieners', price: 860, composition: 'Состав: говядина, вода, шпик, соль, чеснок, сахар, специи. Пищевая ценность (100г): белки 11г, жиры 18г, углеводы 0,9г. Калорийность 768 ккал. Срок годности при +2-6°C не более 5 суток, упакованных под вакуумом 15 суток', image: 'https://cdn.poehali.dev/files/f28d30bf-b779-4602-896b-1c63ec16f792.JPG' },
-  { id: 55, name: 'Сардельки куриные', category: 'wieners', price: 650, composition: 'Состав: мясо кур, соль, специи. Пищевая ценность (100г): белки 14,2г, жиры 23г, углеводы 0,9г. Калорийность 270 ккал. Срок годности при +2-6°C не более 5 суток, упакованных под вакуумом 15 суток', image: 'https://cdn.poehali.dev/files/004e5ea4-a279-4892-afde-4c2bc63e8f38.JPG' },
-  { id: 56, name: 'Сардельки обыкновенные', category: 'wieners', price: 800, composition: 'Состав: говядина, вода, свинина, шпик, сахар, соль, специи. Пищевая ценность (100г): белки 11г, жиры 20г. Калорийность 244 ккал. Срок годности при +2-6°C не более 10 суток, упакованных под вакуумом 15 суток', image: 'https://cdn.poehali.dev/files/e3ceacf7-8d7d-429a-a448-7bb76fe464eb.JPG' },
+  { id: 21, name: 'Ветчина куриная', category: 'smoked', price: 620, composition: 'Ветчина из куриного мяса', image: 'https://cdn.poehali.dev/files/7f4e4ddf-5a83-4e70-b6d7-be6a346e88fa.jpg' },
+  { id: 52, name: 'Рулет свиной с овощами', category: 'semifinished', price: 540, composition: 'Состав: свинина, овощи, специи. Пищевая ценность (100г): белки 13г, жиры 25г, углеводы 5г. Калорийность 298 ккал. Срок годности при +2-6°C не более 7 суток', image: 'https://cdn.poehali.dev/files/d9ea30fe-e8b2-4eea-abd7-6f48f7f00e74.JPG' },
+  { id: 53, name: 'Рулет свиной с грибами', category: 'semifinished', price: 540, composition: 'Состав: свинина, грибы, специи. Пищевая ценность (100г): белки 14г, жиры 23г, углеводы 4г. Калорийность 283 ккал. Срок годности при +2-6°C не более 7 суток', image: 'https://cdn.poehali.dev/files/6c97a33f-6ff7-484a-b3e6-f10e94ac1cb6.JPG' },
+  { id: 54, name: 'Рулет из индейки с сыром', category: 'semifinished', price: 700, composition: 'Состав: индейка, сыр, специи. Пищевая ценность (100г): белки 16г, жиры 20г, углеводы 2г. Калорийность 258 ккал. Срок годности при +2-6°C не более 7 суток', image: 'https://cdn.poehali.dev/files/b30fe0f2-2a05-4bfa-95a2-e2c1b5b77a35.JPG' },
+  { id: 55, name: 'Сардельки домашние', category: 'wieners', price: 650, composition: 'Состав: свинина, говядина, вода, соль, чеснок, специи. Пищевая ценность (100г): белки 12г, жиры 28г. Калорийность 304 ккал. Срок годности при +2-6°C не более 10 суток, упакованных под вакуумом 15 суток', image: 'https://cdn.poehali.dev/files/ec1f84d6-0e8d-4a78-be3f-7bb66cc25584.JPG' },
+  { id: 56, name: 'Сардельки говяжьи', category: 'wieners', price: 650, composition: 'Состав: говядина, вода, соль, специи. Пищевая ценность (100г): белки 13,5г, жиры 20,5г. Калорийность 252 ккал. Срок годности при +2-6°C не более 10 суток, упакованных под вакуумом 15 суток', image: 'https://cdn.poehali.dev/files/2bdd2511-1f6e-482e-a1bf-e35a1ad5b6e7.JPG' },
   { id: 57, name: 'Сардельки свиные', category: 'wieners', price: 750, composition: 'Состав: свинина, шпик, вода, сахар, соль, специи. Пищевая ценность (100г): белки 11г, жиры 20г. Калорийность 244 ккал. Срок годности при +2-6°C не более 10 суток, упакованных под вакуумом 15 суток', image: 'https://cdn.poehali.dev/files/6964441f-02fb-4f33-a93a-4083cc088c64.JPG' },
   { id: 61, name: 'Сардельки сочные', category: 'wieners', price: 450, composition: 'Состав: свинина, шпик, вода, сахар, соль, специи. Пищевая ценность (100г): белки 11г, жиры 20г. Калорийность 244 ккал. Срок годности при +2-6°C не более 10 суток, упакованных под вакуумом 15 суток', image: 'https://cdn.poehali.dev/files/0ed8e054-4cf7-4d61-92ee-7b56b7131d0f.jpg' },
   { id: 58, name: 'Сосиски малютка', category: 'wieners', price: 750, composition: 'Состав: говядина, свинина, курица, шпик, молоко, сливки, яйцо, специи. Пищевая ценность (100г): белки 11г, жиры 25г, углеводы 0,11г. Калорийность 273 ккал. Срок годности при +2-6°C не более 15 суток, упакованных под вакуумом 25 суток', image: 'https://cdn.poehali.dev/files/276003c6-e0de-4477-8727-cd20b6e772c5.JPG' },
@@ -178,322 +179,47 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b">
-        <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <button onClick={() => setActiveSection('home')} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <img src="https://cdn.poehali.dev/files/bc00e618-2da4-4ea8-bf3e-5ac10f1d3b12.jpg" alt="Наш Продукт" className="h-12" />
-            <span className="text-xl font-bold text-foreground">Наш продукт</span>
-          </button>
-          <div className="hidden md:flex gap-8">
-            {['home', 'catalog', 'about', 'reviews', 'contacts'].map(section => (
-              <button
-                key={section}
-                onClick={() => setActiveSection(section)}
-                className={`text-sm font-medium transition-colors ${
-                  activeSection === section ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                {section === 'home' && 'Главная'}
-                {section === 'catalog' && 'Каталог'}
-                {section === 'about' && 'О нас'}
-                {section === 'reviews' && 'Отзывы'}
-                {section === 'contacts' && 'Контакты'}
-              </button>
-            ))}
-          </div>
-          <Button asChild className="bg-[#25D366] hover:bg-[#22c55e]">
-            <a href="https://wa.me/79877418799" target="_blank" rel="noopener noreferrer" className="flex items-center">
-              <Icon name="MessageCircle" size={18} className="mr-2" />
-              WhatsApp
-            </a>
-          </Button>
-        </nav>
-      </header>
+      <Header 
+        activeSection={activeSection} 
+        onSectionChange={setActiveSection} 
+      />
 
       {activeSection === 'home' && (
-        <main>
-          <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-[url('https://cdn.poehali.dev/files/b4f22765-d9a1-404a-918b-fef39e295eb8.jpg')] bg-cover bg-center" />
-            <div className="absolute inset-0 bg-black/60" />
-            <div className="container mx-auto px-4 text-center relative z-10 animate-fade-in">
-              <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-                Качество на вашем столе
-              </h1>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Свежие продукты от производителя: мясо, выпечка, деликатесы
-              </p>
-              <Button 
-                size="lg" 
-                className="text-lg px-8 py-6"
-                onClick={() => setActiveSection('catalog')}
-              >
-                Перейти в каталог
-              </Button>
-            </div>
-          </section>
-
-          <section className="py-20 bg-background">
-            <div className="container mx-auto px-4">
-              <h2 className="text-4xl font-bold text-center mb-16 text-foreground">Категории продуктов</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {categories.map((cat, idx) => (
-                  <Card 
-                    key={cat.id}
-                    className="cursor-pointer hover:shadow-lg transition-all hover-scale animate-fade-in"
-                    style={{ animationDelay: `${idx * 0.1}s` }}
-                    onClick={() => {
-                      setSelectedCategory(cat.id);
-                      setActiveSection('catalog');
-                    }}
-                  >
-                    <CardContent className="p-6 text-center">
-                      <Icon name={cat.icon} size={48} className="mx-auto mb-4 text-primary" />
-                      <p className="font-semibold text-foreground">{cat.name}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </section>
-        </main>
+        <HomeSection 
+          categories={categories}
+          onCatalogClick={() => setActiveSection('catalog')}
+          onCategorySelect={(categoryId) => setSelectedCategory(categoryId)}
+        />
       )}
 
       {activeSection === 'catalog' && (
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold mb-8 text-foreground">Каталог продуктов</h2>
-            
-            <div className="mb-6">
-              <div className="relative max-w-md">
-                <Icon name="Search" size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Поиск по названию или составу..."
-                  value={searchQuery}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value);
-                    setSelectedCategory(null);
-                  }}
-                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                />
-                {searchQuery && (
-                  <button 
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                  >
-                    <Icon name="X" size={20} />
-                  </button>
-                )}
-              </div>
-            </div>
-
-            <div className="flex gap-3 mb-8 flex-wrap">
-              <Badge 
-                variant={selectedCategory === null ? "default" : "outline"}
-                className="cursor-pointer px-4 py-2"
-                onClick={() => setSelectedCategory(null)}
-              >
-                Все категории
-              </Badge>
-              {categories.map(cat => (
-                <Badge 
-                  key={cat.id}
-                  variant={selectedCategory === cat.id ? "default" : "outline"}
-                  className="cursor-pointer px-4 py-2"
-                  onClick={() => setSelectedCategory(cat.id)}
-                >
-                  {cat.name}
-                </Badge>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredProducts.map((product, idx) => (
-                <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-all animate-fade-in hover-scale" style={{ animationDelay: `${idx * 0.05}s` }}>
-                  <div className="aspect-square bg-muted overflow-hidden cursor-pointer" onClick={() => setLightboxImage(product.image)}>
-                    <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="text-lg">{product.name}</CardTitle>
-                    <CardDescription className="text-sm">{product.composition}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <span className="text-2xl font-bold text-primary">{product.price} ₽</span>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        <CatalogSection 
+          categories={categories}
+          filteredProducts={filteredProducts}
+          searchQuery={searchQuery}
+          selectedCategory={selectedCategory}
+          onSearchChange={setSearchQuery}
+          onCategorySelect={setSelectedCategory}
+          onImageClick={setLightboxImage}
+        />
       )}
 
-      {activeSection === 'about' && (
-        <section className="py-16">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-4xl font-bold mb-8 text-foreground">О нас</h2>
-            <div className="prose prose-lg max-w-none">
-              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                🥩 Компания «Наш продукт» — ваш надёжный поставщик натуральных продуктов!
-              </p>
-              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                <strong>Направления бизнеса:</strong> мясопереработка, производство полуфабрикатов, колбасных и копченых изделий, выпечка и кондитерские изделия, розничная торговля.
-              </p>
-              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                <strong>Наша гордость:</strong> собственное производство, более 1000 наименований продукции, 20 лет на рынке, современное европейское оборудование, строжайший контроль качества.
-              </p>
-              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                <strong>Принципы работы:</strong> натуральные ингредиенты, традиционные русские рецепты, открытость производства.
-              </p>
-              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                Качество — наш приоритет! На предприятии работают ветеринары, которые следят за здоровьем животных и свежестью продукции.
-              </p>
-              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                👨‍💼 Команда профессионалов создаёт вкусную и качественную еду для вас. Мы ценим доверие покупателей и постоянно совершенствуемся!
-              </p>
-              <p className="text-muted-foreground mb-6 text-lg leading-relaxed font-semibold">
-                Добро пожаловать в магазины «Наш продукт»! ❤
-              </p>
-              <div className="grid md:grid-cols-3 gap-6 mt-12">
-                <Card className="text-center">
-                  <CardContent className="pt-6">
-                    <Icon name="Award" size={48} className="mx-auto mb-4 text-primary" />
-                    <h3 className="font-bold text-xl mb-2">20 лет</h3>
-                    <p className="text-muted-foreground">на рынке</p>
-                  </CardContent>
-                </Card>
-                <Card className="text-center">
-                  <CardContent className="pt-6">
-                    <Icon name="Package" size={48} className="mx-auto mb-4 text-primary" />
-                    <h3 className="font-bold text-xl mb-2">1000</h3>
-                    <p className="text-muted-foreground">наименований продукции</p>
-                  </CardContent>
-                </Card>
-                <Card className="text-center">
-                  <CardContent className="pt-6">
-                    <Icon name="CheckCircle" size={48} className="mx-auto mb-4 text-primary" />
-                    <h3 className="font-bold text-xl mb-2">100%</h3>
-                    <p className="text-muted-foreground">натуральный продукт</p>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
+      {(activeSection === 'about' || activeSection === 'reviews' || activeSection === 'contacts') && (
+        <ContentSections 
+          activeSection={activeSection}
+          reviews={reviews}
+        />
       )}
-
-      {activeSection === 'reviews' && (
-        <section className="py-16 bg-muted/30">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-4xl font-bold mb-12 text-foreground text-center">Отзывы наших клиентов</h2>
-            <div className="space-y-6">
-              {reviews.map((review, idx) => (
-                <Card key={review.id} className="animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
-                  <CardContent className="pt-6">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2">
-                          <h3 className="font-semibold text-lg">{review.name}</h3>
-                          <div className="flex">
-                            {[...Array(review.rating)].map((_, i) => (
-                              <Icon key={i} name="Star" size={16} className="text-primary fill-primary" />
-                            ))}
-                          </div>
-                        </div>
-                        <p className="text-muted-foreground">{review.text}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {activeSection === 'contacts' && (
-        <section className="py-16">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-4xl font-bold mb-12 text-foreground">Контакты</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Icon name="MapPin" className="text-primary" />
-                    Адрес
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">Нижегородская область, Городецкий муниципальный округ, село Смольки, улица Новая, строение 13</p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Icon name="Phone" className="text-primary" />
-                    Телефон
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">+7 (987) 741-87-99</p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Icon name="Mail" className="text-primary" />
-                    Email
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">dmitrykozyrev2000@yandex.ru</p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Icon name="Clock" className="text-primary" />
-                    Время работы
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">Пн-Вс: 8:00 - 17:00</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-      )}
-
-      <footer className="bg-white border-t-2 border-gray-200 py-12 mt-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <img src="https://cdn.poehali.dev/files/bc00e618-2da4-4ea8-bf3e-5ac10f1d3b12.jpg" alt="Наш Продукт" className="h-16" />
-            <span className="text-2xl font-bold text-foreground">Наш продукт</span>
-          </div>
-          <p className="text-muted-foreground">© 2024 Наш Продукт. Все права защищены.</p>
-        </div>
-      </footer>
 
       {lightboxImage && (
-        <div 
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 cursor-pointer"
-          onClick={() => setLightboxImage(null)}
-        >
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={() => setLightboxImage(null)}>
           <button 
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+            className="absolute top-4 right-4 text-white hover:text-gray-300"
             onClick={() => setLightboxImage(null)}
           >
             <Icon name="X" size={32} />
           </button>
-          <img 
-            src={lightboxImage} 
-            alt="Увеличенное фото" 
-            className="max-w-full max-h-full object-contain"
-            onClick={(e) => e.stopPropagation()}
-          />
+          <img src={lightboxImage} alt="Увеличенное изображение" className="max-w-full max-h-full object-contain" />
         </div>
       )}
     </div>
