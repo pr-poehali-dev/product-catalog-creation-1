@@ -186,8 +186,12 @@ export default function Index() {
       <header className="sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Icon name="ShoppingBag" size={32} className="text-primary" />
+            <div className="flex items-center gap-3">
+              <img 
+                src="https://cdn.poehali.dev/projects/2e6cc20d-185a-4d95-8ab0-89ee46e78b17/files/054e27d0-25cc-4b24-bb86-c14a3b24f710.jpg" 
+                alt="Логотип Наш продукт" 
+                className="h-12 w-12 object-contain rounded"
+              />
               <h1 className="text-2xl font-bold text-foreground">Наш продукт</h1>
             </div>
             <div className="flex gap-6">
