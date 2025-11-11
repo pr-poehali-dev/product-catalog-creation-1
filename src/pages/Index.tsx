@@ -143,6 +143,34 @@ export default function Index() {
         const normalizedComposition = p.composition.toLowerCase().replace(/[\\\/]/g, '');
         return normalizedName.includes(normalizedQuery) || normalizedComposition.includes(normalizedQuery);
       });
+      
+      filtered.sort((a, b) => {
+        const aName = a.name.toLowerCase().replace(/[\\\/]/g, '');
+        const bName = b.name.toLowerCase().replace(/[\\\/]/g, '');
+        const aComp = a.composition.toLowerCase().replace(/[\\\/]/g, '');
+        const bComp = b.composition.toLowerCase().replace(/[\\\/]/g, '');
+        
+        const aNameIndex = aName.indexOf(normalizedQuery);
+        const bNameIndex = bName.indexOf(normalizedQuery);
+        const aCompIndex = aComp.indexOf(normalizedQuery);
+        const bCompIndex = bComp.indexOf(normalizedQuery);
+        
+        const aInName = aNameIndex !== -1;
+        const bInName = bNameIndex !== -1;
+        
+        if (aInName && !bInName) return -1;
+        if (!aInName && bInName) return 1;
+        
+        if (aInName && bInName) {
+          return aNameIndex - bNameIndex;
+        }
+        
+        if (aCompIndex !== -1 && bCompIndex !== -1) {
+          return aCompIndex - bCompIndex;
+        }
+        
+        return 0;
+      });
     }
     
     return filtered;
