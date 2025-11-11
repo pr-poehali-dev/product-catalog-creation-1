@@ -1,9 +1,8 @@
 import { useState, useMemo } from 'react';
 import Icon from '@/components/ui/icon';
-import Header from '@/components/sections/Header';
-import HomeSection from '@/components/sections/HomeSection';
-import CatalogSection from '@/components/sections/CatalogSection';
-import ContentSections from '@/components/sections/ContentSections';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 interface Product {
   id: number;
@@ -92,7 +91,7 @@ const products: Product[] = [
   { id: 49, name: 'П/К сервелат польский', category: 'sausages', price: 850, composition: 'Состав: свинина, соль, перец черный. Пищевая ценность (100г): белки 17г, жиры 35г, углеводы 3,3г. Калорийность 360 ккал. Срок годности при +2-6°C не более 25 суток', image: 'https://cdn.poehali.dev/files/4e49339d-d1d2-484d-98c1-8c86ee67b820.jpg' },
   { id: 50, name: 'П/К шварцвальдская', category: 'sausages', price: 1100, composition: 'Состав: свинина, говядина, шпик, соль, специи (перец зеленый). Пищевая ценность (100г): белки 12г, жиры 46г. Калорийность 462 ккал. Срок годности при +2-6°C 15 суток, в вакуумной упаковке 25 суток. Упаковано под вакуумом', image: 'https://cdn.poehali.dev/files/1ad6cf38-8245-4eed-b218-ca5118827ab8.JPG' },
   { id: 51, name: 'П/К охотничьи', category: 'sausages', price: 850, composition: 'Состав: свинина, говядина, соль, специи. Пищевая ценность (100г): белки 14г, жиры 46г, углеводы 2,4г. Калорийность 455 ккал. Срок годности: при -18°C 6 мес., при -12°C 4 мес., при -10°C 3 мес.', image: 'https://cdn.poehali.dev/files/c15182a7-967a-4032-857e-42ce0f8af290.JPG' },
-  { id: 21, name: 'Ветчина куриная', category: 'smoked', price: 620, composition: 'Ветчина из куриного мяса', image: 'https://cdn.poehali.dev/files/7f4e4ddf-5a83-4e70-b6d7-be6a346e88fa.jpg' },
+  { id: 78, name: 'Ветчина куриная', category: 'smoked', price: 620, composition: 'Ветчина из куриного мяса', image: 'https://cdn.poehali.dev/files/7f4e4ddf-5a83-4e70-b6d7-be6a346e88fa.jpg' },
   { id: 52, name: 'Рулет свиной с овощами', category: 'semifinished', price: 540, composition: 'Состав: свинина, овощи, специи. Пищевая ценность (100г): белки 13г, жиры 25г, углеводы 5г. Калорийность 298 ккал. Срок годности при +2-6°C не более 7 суток', image: 'https://cdn.poehali.dev/files/d9ea30fe-e8b2-4eea-abd7-6f48f7f00e74.JPG' },
   { id: 53, name: 'Рулет свиной с грибами', category: 'semifinished', price: 540, composition: 'Состав: свинина, грибы, специи. Пищевая ценность (100г): белки 14г, жиры 23г, углеводы 4г. Калорийность 283 ккал. Срок годности при +2-6°C не более 7 суток', image: 'https://cdn.poehali.dev/files/6c97a33f-6ff7-484a-b3e6-f10e94ac1cb6.JPG' },
   { id: 54, name: 'Рулет из индейки с сыром', category: 'semifinished', price: 700, composition: 'Состав: индейка, сыр, специи. Пищевая ценность (100г): белки 16г, жиры 20г, углеводы 2г. Калорийность 258 ккал. Срок годности при +2-6°C не более 7 суток', image: 'https://cdn.poehali.dev/files/b30fe0f2-2a05-4bfa-95a2-e2c1b5b77a35.JPG' },
@@ -106,16 +105,16 @@ const products: Product[] = [
   { id: 62, name: 'Сосиски ветчинные куриные', category: 'wieners', price: 650, composition: 'Состав: мясо домашней курицы, вода, соль, чеснок, перец черный, специи. Пищевая ценность (100г): белки 14,2г, жиры 23г, углеводы 0,9г. Калорийность 270 ккал. Срок годности при +2-6°C не более 6 суток, упакованных под вакуумом 15 суток', image: 'https://cdn.poehali.dev/files/b2258414-eb83-4856-b41f-62f184f4f671.jpg' },
   { id: 63, name: 'Сосиски свиные', category: 'wieners', price: 350, composition: 'Состав: свинина, шпик, молоко, яйцо, специи. Пищевая ценность (100г): белки 11г, жиры 25г, углеводы 0,11г. Калорийность 273 ккал. Срок годности при +2-6°C не более 15 суток, упакованных под вакуумом 25 суток', image: 'https://cdn.poehali.dev/files/6f4d3e80-9753-42d9-9a90-8cb87cf7bbe9.jpg' },
   { id: 64, name: 'Шпикачки куриные', category: 'wieners', price: 650, composition: 'Состав: мясо птицы, вода, соль, специи. Пищевая ценность (100г): белки 10,5г, жиры 33,4г. Калорийность 350 ккал. Срок годности при +2-6°C не более 6 суток, упакованных под вакуумом не более 15 суток', image: 'https://cdn.poehali.dev/files/4e9ce517-cf4a-4309-9111-83ed0aa5c7ff.JPG' },
-  { id: 7, name: 'Торт "Наполеон"', category: 'cakes', price: 1200, composition: 'Слоеное тесто, заварной крем, сливочное масло', image: '/placeholder.svg' },
-  { id: 8, name: 'Торт "Прага"', category: 'cakes', price: 1350, composition: 'Шоколадные коржи, сливки, какао', image: '/placeholder.svg' },
-  { id: 9, name: 'Бородинский хлеб', category: 'bread', price: 85, composition: 'Ржаная мука, солод, кориандр', image: '/placeholder.svg' },
-  { id: 10, name: 'Багет французский', category: 'bread', price: 95, composition: 'Пшеничная мука, вода, соль, дрожжи', image: '/placeholder.svg' },
-  { id: 11, name: 'Пирог с капустой', category: 'pies', price: 180, composition: 'Дрожжевое тесто, капуста, яйца', image: '/placeholder.svg' },
-  { id: 12, name: 'Пирог с яблоками', category: 'pies', price: 220, composition: 'Песочное тесто, яблоки, корица, сахар', image: '/placeholder.svg' },
-  { id: 17, name: 'Молоко "Вологжанка" 1,5%', category: 'dairy', price: 85, composition: 'Натуральное молоко, 1.5% жирности', image: 'https://cdn.poehali.dev/files/047e7ba0-05f7-4a67-9600-fa056df13b94.jpg' },
-  { id: 18, name: 'Творог фермерский', category: 'dairy', price: 280, composition: 'Творог из цельного молока, 9% жирности', image: '/placeholder.svg' },
-  { id: 19, name: 'Сметана домашняя', category: 'dairy', price: 150, composition: 'Натуральная сметана, 20% жирности', image: '/placeholder.svg' },
-  { id: 20, name: 'Масло сливочное', category: 'dairy', price: 380, composition: 'Сливочное масло, 82.5% жирности', image: '/placeholder.svg' }
+  { id: 79, name: 'Торт "Наполеон"', category: 'cakes', price: 1200, composition: 'Слоеное тесто, заварной крем, сливочное масло', image: '/placeholder.svg' },
+  { id: 80, name: 'Торт "Прага"', category: 'cakes', price: 1350, composition: 'Шоколадные коржи, сливки, какао', image: '/placeholder.svg' },
+  { id: 81, name: 'Бородинский хлеб', category: 'bread', price: 85, composition: 'Ржаная мука, солод, кориандр', image: '/placeholder.svg' },
+  { id: 82, name: 'Багет французский', category: 'bread', price: 95, composition: 'Пшеничная мука, вода, соль, дрожжи', image: '/placeholder.svg' },
+  { id: 83, name: 'Пирог с капустой', category: 'pies', price: 180, composition: 'Дрожжевое тесто, капуста, яйца', image: '/placeholder.svg' },
+  { id: 84, name: 'Пирог с яблоками', category: 'pies', price: 220, composition: 'Песочное тесто, яблоки, корица, сахар', image: '/placeholder.svg' },
+  { id: 85, name: 'Молоко "Вологжанка" 1,5%', category: 'dairy', price: 85, composition: 'Натуральное молоко, 1.5% жирности', image: 'https://cdn.poehali.dev/files/047e7ba0-05f7-4a67-9600-fa056df13b94.jpg' },
+  { id: 86, name: 'Творог фермерский', category: 'dairy', price: 280, composition: 'Творог из цельного молока, 9% жирности', image: '/placeholder.svg' },
+  { id: 87, name: 'Сметана домашняя', category: 'dairy', price: 150, composition: 'Натуральная сметана, 20% жирности', image: '/placeholder.svg' },
+  { id: 88, name: 'Масло сливочное', category: 'dairy', price: 380, composition: 'Сливочное масло, 82.5% жирности', image: '/placeholder.svg' }
 ];
 
 const reviews = [
@@ -177,38 +176,257 @@ export default function Index() {
     return filtered;
   }, [selectedCategory, searchQuery]);
 
+  const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <Header 
-        activeSection={activeSection} 
-        onSectionChange={setActiveSection} 
-      />
+      <header className="sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+        <div className="container mx-auto px-4 py-4">
+          <nav className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Icon name="ShoppingBag" size={32} className="text-primary" />
+              <h1 className="text-2xl font-bold text-foreground">Наш продукт</h1>
+            </div>
+            <div className="flex gap-6">
+              <button onClick={() => scrollToSection('home')} className={`hover:text-primary transition-colors ${activeSection === 'home' ? 'text-primary font-semibold' : 'text-muted-foreground'}`}>
+                Главная
+              </button>
+              <button onClick={() => scrollToSection('catalog')} className={`hover:text-primary transition-colors ${activeSection === 'catalog' ? 'text-primary font-semibold' : 'text-muted-foreground'}`}>
+                Каталог
+              </button>
+              <button onClick={() => scrollToSection('about')} className={`hover:text-primary transition-colors ${activeSection === 'about' ? 'text-primary font-semibold' : 'text-muted-foreground'}`}>
+                О нас
+              </button>
+              <button onClick={() => scrollToSection('reviews')} className={`hover:text-primary transition-colors ${activeSection === 'reviews' ? 'text-primary font-semibold' : 'text-muted-foreground'}`}>
+                Отзывы
+              </button>
+              <button onClick={() => scrollToSection('contacts')} className={`hover:text-primary transition-colors ${activeSection === 'contacts' ? 'text-primary font-semibold' : 'text-muted-foreground'}`}>
+                Контакты
+              </button>
+            </div>
+          </nav>
+        </div>
+      </header>
 
       {activeSection === 'home' && (
-        <HomeSection 
-          categories={categories}
-          onCatalogClick={() => setActiveSection('catalog')}
-          onCategorySelect={(categoryId) => setSelectedCategory(categoryId)}
-        />
+        <>
+          <section className="relative bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-20">
+            <div className="container mx-auto px-4 text-center">
+              <h2 className="text-5xl font-bold mb-6 text-foreground animate-fade-in">
+                Натуральные продукты для вашей семьи
+              </h2>
+              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                Мы — компания «Наш продукт», специализируемся на производстве качественных мясных изделий, полуфабрикатов, выпечки и молочных продуктов
+              </p>
+              <Button size="lg" onClick={() => scrollToSection('catalog')} className="animate-fade-in hover-scale" style={{ animationDelay: '0.4s' }}>
+                Смотреть каталог
+              </Button>
+            </div>
+          </section>
+
+          <section className="py-16 bg-muted/30">
+            <div className="container mx-auto px-4">
+              <h2 className="text-4xl font-bold mb-12 text-center text-foreground">Категории товаров</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                {categories.map((cat, idx) => (
+                  <Card 
+                    key={cat.id} 
+                    className="cursor-pointer hover:shadow-xl transition-all animate-fade-in hover-scale"
+                    style={{ animationDelay: `${idx * 0.1}s` }}
+                    onClick={() => {
+                      setSelectedCategory(cat.id);
+                      scrollToSection('catalog');
+                    }}
+                  >
+                    <CardHeader className="text-center">
+                      <Icon name={cat.icon as any} size={48} className="mx-auto mb-4 text-primary" />
+                      <CardTitle className="text-lg">{cat.name}</CardTitle>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
       )}
 
       {activeSection === 'catalog' && (
-        <CatalogSection 
-          categories={categories}
-          filteredProducts={filteredProducts}
-          searchQuery={searchQuery}
-          selectedCategory={selectedCategory}
-          onSearchChange={setSearchQuery}
-          onCategorySelect={setSelectedCategory}
-          onImageClick={setLightboxImage}
-        />
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold mb-8 text-foreground">Каталог продуктов</h2>
+            
+            <div className="mb-6">
+              <div className="relative max-w-md">
+                <Icon name="Search" size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="text"
+                  placeholder="Поиск по названию или составу..."
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setSelectedCategory(null);
+                  }}
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                {searchQuery && (
+                  <button 
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  >
+                    <Icon name="X" size={20} />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            <div className="flex gap-3 mb-8 flex-wrap">
+              <Badge 
+                variant={selectedCategory === null ? "default" : "outline"}
+                className="cursor-pointer px-4 py-2"
+                onClick={() => setSelectedCategory(null)}
+              >
+                Все категории
+              </Badge>
+              {categories.map(cat => (
+                <Badge 
+                  key={cat.id}
+                  variant={selectedCategory === cat.id ? "default" : "outline"}
+                  className="cursor-pointer px-4 py-2"
+                  onClick={() => setSelectedCategory(cat.id)}
+                >
+                  {cat.name}
+                </Badge>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredProducts.map((product, idx) => (
+                <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-all animate-fade-in hover-scale" style={{ animationDelay: `${idx * 0.05}s` }}>
+                  <div className="aspect-square bg-muted overflow-hidden cursor-pointer" onClick={() => setLightboxImage(product.image)}>
+                    <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-lg">{product.name}</CardTitle>
+                    <CardDescription className="text-sm">{product.composition}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <span className="text-2xl font-bold text-primary">{product.price} ₽</span>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
       )}
 
-      {(activeSection === 'about' || activeSection === 'reviews' || activeSection === 'contacts') && (
-        <ContentSections 
-          activeSection={activeSection}
-          reviews={reviews}
-        />
+      {activeSection === 'about' && (
+        <section className="py-16">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-4xl font-bold mb-8 text-foreground">О нас</h2>
+            <div className="prose prose-lg max-w-none">
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                🥩 Компания «Наш продукт» — ваш надёжный поставщик натуральных продуктов!
+              </p>
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                <strong>Направления бизнеса:</strong> мясопереработка, производство полуфабрикатов, колбасных и копченых изделий, выпечка и кондитерские изделия, розничная торговля.
+              </p>
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                <strong>Продукция:</strong> более 100 видов мясных изделий: охлажденное мясо, тушенка, колбасы, копчености, полуфабрикаты, сыры, молочные продукты, торты, выпечка, хлеб, пироги.
+              </p>
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                📍 Торговые точки: 10+ магазинов в Нижегородской и Владимирской областях.
+              </p>
+              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                🚚 Доставка: по городу Заволжье, Городец, Нижний Новгород — ежедневно в удобное время!
+              </p>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Мы гордимся качеством нашей продукции и стремимся сделать здоровое питание доступным каждой семье. Выбирайте свежее, выбирайте «Наш продукт»!
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {activeSection === 'reviews' && (
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold mb-12 text-center text-foreground">Отзывы наших клиентов</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {reviews.map(review => (
+                <Card key={review.id} className="hover:shadow-xl transition-all animate-fade-in">
+                  <CardHeader>
+                    <div className="flex items-center gap-2 mb-2">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Icon key={i} name="Star" size={20} className="text-yellow-400 fill-yellow-400" />
+                      ))}
+                    </div>
+                    <CardDescription className="font-semibold text-foreground text-base">{review.name}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{review.text}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {activeSection === 'contacts' && (
+        <section className="py-16">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-4xl font-bold mb-8 text-foreground">Контакты</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Icon name="Phone" size={24} className="text-primary" />
+                    <h3 className="text-xl font-semibold text-foreground">Телефон</h3>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <a href="tel:+79877418799" className="text-lg text-primary hover:underline">+7 (987) 741-87-99</a>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Icon name="Mail" size={24} className="text-primary" />
+                    <h3 className="text-xl font-semibold text-foreground">Email</h3>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <a href="mailto:info@nashproduct.ru" className="text-lg text-primary hover:underline">info@nashproduct.ru</a>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Icon name="MapPin" size={24} className="text-primary" />
+                    <h3 className="text-xl font-semibold text-foreground">Адрес</h3>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">г. Заволжье, ул. Промышленная, 15</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Icon name="Clock" size={24} className="text-primary" />
+                    <h3 className="text-xl font-semibold text-foreground">Режим работы</h3>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">Пн-Вс: 8:00 - 20:00</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
       )}
 
       {lightboxImage && (
