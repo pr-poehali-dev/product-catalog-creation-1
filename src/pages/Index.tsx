@@ -41,7 +41,7 @@ const products: Product[] = [
   { id: 10, name: 'Куриная голень в/к', category: 'smoked', price: 540, composition: 'Голень куриная, варено-копченая', image: 'https://cdn.poehali.dev/files/5a6566e1-d05f-4d9f-af14-63a6562a57fc.jpg' },
   { id: 11, name: 'Куриное бедро в/к', category: 'smoked', price: 540, composition: 'Бедро куриное, варено-копченое', image: 'https://cdn.poehali.dev/files/dc1e7a5c-eec2-4d99-8d54-94656fec08b2.JPG' },
   { id: 12, name: 'Куриный окорочок в/к', category: 'smoked', price: 540, composition: 'Окорочок куриный, варено-копченый', image: 'https://cdn.poehali.dev/files/72d901d4-52d2-44b2-96cd-c257de66d0ea.JPG' },
-  { id: 13, name: 'Ребра свиные в/к', category: 'smoked', price: 520, composition: 'Ребра свиные, варено-копченые', image: 'https://cdn.poehali.dev/files/a26dd87b-8c5e-4764-aa48-1d0d3d485461.jpg' },
+  { id: 13, name: 'Ребра свиные в/к', category: 'smoked', price: 520, composition: 'Ребра свиные, варено-копченые', image: 'https://cdn.poehali.dev/files/ba8bd2d7-4918-48a6-ad39-7b940cffb6ad.jpeg' },
   { id: 14, name: 'Рулет куриный в/к', category: 'smoked', price: 800, composition: 'Рулет куриный, варено-копченый', image: 'https://cdn.poehali.dev/files/be2cef10-67ca-475b-9e8c-8ebcd1a36d5a.JPG' },
   { id: 15, name: 'Сало белорусское', category: 'smoked', price: 860, composition: 'Сало белорусское с прослойкой, специи', image: 'https://cdn.poehali.dev/files/84dafda9-6ede-4f2d-ac68-15c4dfcabf65.JPG' },
   { id: 17, name: 'Свинина в/к в д/обсыпке', category: 'smoked', price: 890, composition: 'Свинина варено-копченая в обсыпке', image: 'https://cdn.poehali.dev/files/3e8e522c-d468-4a47-810f-355f1e673791.JPG' },
