@@ -268,17 +268,19 @@ export default function Index() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredProducts.map((product, idx) => (
-                <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-all animate-fade-in hover-scale" style={{ animationDelay: `${idx * 0.05}s` }}>
-                  <div className="aspect-square bg-muted overflow-hidden cursor-pointer" onClick={() => setLightboxImage(product.image)}>
-                    <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+                <Card key={product.id} className="overflow-hidden group hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 hover:border-primary/20 animate-fade-in" style={{ animationDelay: `${idx * 0.05}s` }}>
+                  <div className="aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden cursor-pointer relative" onClick={() => setLightboxImage(product.image)}>
+                    <img src={product.image} alt={product.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
+                    <div className="absolute top-3 right-3">
+                      <Badge className="bg-primary text-primary-foreground font-bold text-base px-4 py-1.5 shadow-lg">
+                        {product.price} ₽
+                      </Badge>
+                    </div>
                   </div>
-                  <CardHeader>
-                    <CardTitle className="text-lg">{product.name}</CardTitle>
-                    <CardDescription className="text-sm">{product.composition}</CardDescription>
+                  <CardHeader className="space-y-3">
+                    <CardTitle className="text-xl font-bold leading-tight group-hover:text-primary transition-colors">{product.name}</CardTitle>
+                    <CardDescription className="text-sm leading-relaxed line-clamp-3">{product.composition}</CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <span className="text-2xl font-bold text-primary">{product.price} ₽</span>
-                  </CardContent>
                 </Card>
               ))}
             </div>
