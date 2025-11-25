@@ -18,7 +18,7 @@ const categories = [
   { id: 'sausages', name: 'Колбасы', icon: 'Ham' },
   { id: 'wieners', name: 'Сардельки, сосиски', icon: 'Sandwich' },
   { id: 'semifinished', name: 'Полуфабрикаты', icon: 'Package' },
-  { id: 'frozen', name: 'Заморозка', icon: 'Snowflake' },
+  { id: 'frozen', name: 'Пельмени и манты', icon: 'Snowflake' },
   { id: 'smoked', name: 'Копчености', icon: 'Flame' },
   { id: 'canned', name: 'Консервы', icon: 'Container' },
   { id: 'dairy', name: 'Молочная продукция', icon: 'Milk' },
