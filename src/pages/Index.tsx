@@ -34,6 +34,7 @@ const products: Product[] = [
   { id: 3, name: 'Котлеты куриные', category: 'semifinished', price: 280, composition: 'Филе курицы, лук, специи', image: '/placeholder.svg' },
   { id: 4, name: 'Пельмени домашние', category: 'frozen', price: 350, composition: 'Говядина, свинина, тесто, специи', image: 'https://cdn.poehali.dev/projects/2e6cc20d-185a-4d95-8ab0-89ee46e78b17/files/8f088158-8f03-42c1-b08a-eff0cf1abf26.jpg' },
   { id: 21, name: 'Манты с мясом', category: 'frozen', price: 380, composition: 'Баранина, говядина, лук, тесто, специи', image: 'https://cdn.poehali.dev/projects/2e6cc20d-185a-4d95-8ab0-89ee46e78b17/files/bdd747ca-8428-466d-8bbb-022ae8b38d80.jpg' },
+  { id: 101, name: 'Пельмени куриные', category: 'frozen', price: 620, composition: 'Куриное филе, тесто, лук, специи', image: 'https://cdn.poehali.dev/files/2f83173f-28b3-458d-855a-1a34637cd36b.JPG' },
   { id: 5, name: 'Грудинка восточная в/к в обсыпке', category: 'smoked', price: 745, composition: 'Свиная грудинка в восточной обсыпке, варено-копченая', image: 'https://cdn.poehali.dev/files/6ab8730a-9938-437a-b32f-052ed63ef43f.JPG' },
   { id: 68, name: 'Грудинка купеческая в/к', category: 'smoked', price: 770, composition: 'Свиная грудинка купеческая, варено-копченая', image: 'https://cdn.poehali.dev/files/bc5182bb-8563-4ac8-b151-314af4cef298.JPG' },
   { id: 6, name: 'Грудинка любительская в/к', category: 'smoked', price: 755, composition: 'Свиная грудинка любительская, варено-копченая', image: 'https://cdn.poehali.dev/files/87d0fda3-8869-4d27-b600-4c1c0d34be34.JPG' },
